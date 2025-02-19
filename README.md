@@ -1,66 +1,151 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# E-Commerce Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern e-commerce platform built with Laravel and Vue.js, featuring a shopping cart system, product categories, and admin management.
 
-## About Laravel
+## Prerequisites
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP 8.1 or higher
+- Composer
+- Node.js (v16+) and npm
+- SQLite
+- Git
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Setup Instructions
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1. Clone the Repository
 
-## Learning Laravel
+```bash
+git clone <repository-url>
+cd <project-directory>
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 2. Install Dependencies
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+# Install PHP dependencies
+composer install
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Install JavaScript dependencies
+npm install
+```
 
-## Laravel Sponsors
+### 3. Environment Setup
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+# Copy the environment file
+cp .env.example .env
 
-### Premium Partners
+# Generate application key
+php artisan key:generate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 4. Database Setup
 
-## Contributing
+For SQLite:
+```bash
+# Create SQLite database
+touch database/database.sqlite
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+### 5. Run Migrations and Seeders
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan migrate:fresh --seed
+```
 
-## Security Vulnerabilities
+### 6. Build Assets
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+npm run dev # for development
+# or
+npm run build # for production
+```
 
-## License
+### 7. Start the Server
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan serve
+```
+
+Visit `http://localhost:8000` to view the application.
+
+## Architecture Overview
+
+### Backend Components
+
+#### Services Layer
+- `DiscountService`: Handles product discount calculations and promotions
+- Implements business logic separation for better maintainability
+
+#### Models
+- `Product`: Product entity with relationships to categories and cart items
+- Implements cart functionality and product management
+
+#### Controllers
+- `CategoryController`: Handles product categorization
+- Admin-specific controllers in the Admin namespace for backend management
+
+#### Middleware
+- `HandleInertiaRequests`: Manages Inertia.js requests and shared data
+
+### Frontend Components
+
+#### Vue.js Pages
+- `Welcome.vue`: Main landing page
+- `Products/Show.vue`: Product detail page with cart integration
+
+#### State Management
+- Uses Pinia store (`useCartStore.js`) for cart state management
+- Implements persistent cart functionality
+
+#### Event Listeners
+- `MergeGuestCart`: Handles cart merging when guest users authenticate
+
+## Design Decisions
+
+1. **Cart Implementation**
+   - Separate guest and authenticated user carts
+   - Cart merging on user authentication
+   - Persistent storage using local storage and database
+
+2. **State Management**
+   - Pinia chosen over Vuex for better TypeScript support and composition API compatibility
+   - Centralized cart state management for consistent shopping experience
+
+3. **Admin Interface**
+   - Separate admin namespace for better organization
+   - Dedicated controllers and views for admin functionality
+
+4. **Service Layer**
+   - Business logic abstraction in services
+   - Improved maintainability and testability
+
+## Future Improvements
+
+1. **Performance Optimization**
+   - Implement caching for product catalog
+   - Add image optimization and lazy loading
+   - Consider Redis for session storage
+
+2. **Feature Additions**
+   - User wishlist functionality
+   - Advanced search with filters
+   - Product reviews and ratings
+   - Order tracking system
+
+3. **Technical Improvements**
+   - Add comprehensive test coverage
+   - Implement API documentation
+   - Set up CI/CD pipeline
+   - Docker containerization
+
+4. **Security Enhancements**
+   - Two-factor authentication
+   - Rate limiting for API endpoints
+   - Enhanced admin access controls
+
+5. **User Experience**
+   - Real-time stock updates
+   - Enhanced mobile responsiveness
+   - Email notification system
+   - Social media integration

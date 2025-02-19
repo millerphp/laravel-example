@@ -20,8 +20,7 @@ const props = defineProps({
 const { handleMouseMove, parallaxStyle } = useParallax();
 
 function addToCart(product) {
-    // We'll implement this later with the cart functionality
-    console.log('Adding to cart:', product);
+    
 }
 </script>
 
