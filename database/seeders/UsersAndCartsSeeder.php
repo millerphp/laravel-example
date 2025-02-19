@@ -30,11 +30,18 @@ class UsersAndCartsSeeder extends Seeder
                 
                 // Only create cart if we have products
                 if ($products->isNotEmpty()) {
+                    $createdAt = fake()->dateTimeBetween($startDate, $endDate);
+                    
+                    // 70% chance of cart being completed
+                    $completedAt = rand(1, 100) <= 70 
+                        ? fake()->dateTimeBetween($createdAt, $endDate) 
+                        : null;
+
                     $cart = Cart::create([
                         'user_id' => $user->id,
-                        'status' => $this->getRandomStatus(),
-                        'created_at' => fake()->dateTimeBetween($startDate, $endDate),
-                        'updated_at' => fake()->dateTimeBetween($startDate, $endDate),
+                        'completed_at' => $completedAt,
+                        'created_at' => $createdAt,
+                        'updated_at' => $completedAt ?? $createdAt,
                     ]);
 
                     foreach ($products as $product) {
@@ -48,23 +55,12 @@ class UsersAndCartsSeeder extends Seeder
                                 'applied_discounts' => $product->applied_discounts ?? [],
                                 'total_discount_percentage' => $product->total_discount_percentage ?? 0,
                             ],
-                            'created_at' => $cart->created_at,
-                            'updated_at' => $cart->created_at,
+                            'created_at' => $createdAt,
+                            'updated_at' => $createdAt,
                         ]);
                     }
                 }
             }
         });
-    }
-
-    private function getRandomStatus(): string
-    {
-        // Weight the statuses to have more completed orders
-        return fake()->randomElement([
-            'completed', 'completed', 'completed', // 3x weight for completed
-            'processing', 'processing', // 2x weight for processing
-            'pending',
-            'cancelled'
-        ]);
     }
 } 
