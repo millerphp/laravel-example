@@ -1,0 +1,149 @@
+{
+    "categories": [
+        {
+            "name": "Electronics",
+            "subcategories": [
+                {
+                    "name": "Smartphones",
+                    "subcategories": [
+                        {"name": "Android Phones"},
+                        {"name": "iPhones"},
+                        {"name": "Phone Accessories"}
+                    ]
+                },
+                {
+                    "name": "Computers",
+                    "subcategories": [
+                        {"name": "Laptops"},
+                        {"name": "Desktop PCs"},
+                        {"name": "Computer Components"}
+                    ]
+                },
+                {
+                    "name": "Gaming",
+                    "subcategories": [
+                        {"name": "Consoles"},
+                        {"name": "Video Games"},
+                        {"name": "Gaming Accessories"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Fashion",
+            "subcategories": [
+                {
+                    "name": "Men's Clothing",
+                    "subcategories": [
+                        {"name": "Shirts"},
+                        {"name": "Pants"},
+                        {"name": "Outerwear"}
+                    ]
+                },
+                {
+                    "name": "Women's Clothing",
+                    "subcategories": [
+                        {"name": "Dresses"},
+                        {"name": "Tops"},
+                        {"name": "Bottoms"}
+                    ]
+                },
+                {
+                    "name": "Accessories",
+                    "subcategories": [
+                        {"name": "Jewelry"},
+                        {"name": "Bags"},
+                        {"name": "Watches"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Home & Living",
+            "subcategories": [
+                {
+                    "name": "Furniture",
+                    "subcategories": [
+                        {"name": "Living Room"},
+                        {"name": "Bedroom"},
+                        {"name": "Office"}
+                    ]
+                },
+                {
+                    "name": "Kitchen",
+                    "subcategories": [
+                        {"name": "Cookware"},
+                        {"name": "Appliances"},
+                        {"name": "Utensils"}
+                    ]
+                },
+                {
+                    "name": "Decor",
+                    "subcategories": [
+                        {"name": "Wall Art"},
+                        {"name": "Lighting"},
+                        {"name": "Home Textiles"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Sports & Outdoors",
+            "subcategories": [
+                {
+                    "name": "Exercise Equipment",
+                    "subcategories": [
+                        {"name": "Cardio Machines"},
+                        {"name": "Weight Training"},
+                        {"name": "Yoga & Pilates"}
+                    ]
+                },
+                {
+                    "name": "Outdoor Recreation",
+                    "subcategories": [
+                        {"name": "Camping"},
+                        {"name": "Hiking"},
+                        {"name": "Cycling"}
+                    ]
+                },
+                {
+                    "name": "Sports Gear",
+                    "subcategories": [
+                        {"name": "Team Sports"},
+                        {"name": "Water Sports"},
+                        {"name": "Winter Sports"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Books & Media",
+            "subcategories": [
+                {
+                    "name": "Books",
+                    "subcategories": [
+                        {"name": "Fiction"},
+                        {"name": "Non-Fiction"},
+                        {"name": "Children's Books"}
+                    ]
+                },
+                {
+                    "name": "Movies",
+                    "subcategories": [
+                        {"name": "Action & Adventure"},
+                        {"name": "Drama"},
+                        {"name": "Documentary"}
+                    ]
+                },
+                {
+                    "name": "Music",
+                    "subcategories": [
+                        {"name": "Vinyl Records"},
+                        {"name": "Digital Music"},
+                        {"name": "Instruments"}
+                    ]
+                }
+            ]
+        }
+    ]
+}

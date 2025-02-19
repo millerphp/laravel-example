@@ -1,0 +1,179 @@
+{
+    "products": [
+        {
+            "title": "iPhone 15 Pro",
+            "description": "Latest Apple iPhone with A17 Pro chip, 48MP camera system, and titanium design",
+            "price": 999.99,
+            "stock": 50,
+            "categories": ["iPhones", "Smartphones"]
+        },
+        {
+            "title": "Samsung Galaxy S24 Ultra",
+            "description": "Premium Android smartphone with S-Pen support and AI features",
+            "price": 1199.99,
+            "stock": 45,
+            "categories": ["Android Phones", "Smartphones"]
+        },
+        {
+            "title": "MacBook Pro 16",
+            "description": "Powerful laptop with M3 Max chip, up to 96GB RAM, and stunning XDR display",
+            "price": 2499.99,
+            "stock": 25,
+            "categories": ["Laptops", "Computers"]
+        },
+        {
+            "title": "Dell XPS 15",
+            "description": "Premium Windows laptop with 13th Gen Intel Core processors",
+            "price": 1799.99,
+            "stock": 30,
+            "categories": ["Laptops", "Computers"]
+        },
+        {
+            "title": "PlayStation 5",
+            "description": "Next-gen gaming console with 4K graphics and DualSense controller",
+            "price": 499.99,
+            "stock": 40,
+            "categories": ["Consoles", "Gaming"]
+        },
+        {
+            "title": "Nike Dri-FIT Running Shirt",
+            "description": "Moisture-wicking athletic shirt for optimal performance",
+            "price": 29.99,
+            "stock": 100,
+            "categories": ["Shirts", "Men's Clothing", "Team Sports"]
+        },
+        {
+            "title": "Levi's 501 Original Jeans",
+            "description": "Classic straight-fit denim jeans",
+            "price": 69.99,
+            "stock": 150,
+            "categories": ["Pants", "Men's Clothing"]
+        },
+        {
+            "title": "Summer Floral Maxi Dress",
+            "description": "Lightweight floral print dress perfect for summer",
+            "price": 79.99,
+            "stock": 75,
+            "categories": ["Dresses", "Women's Clothing"]
+        },
+        {
+            "title": "Fossil Gen 6 Smartwatch",
+            "description": "Advanced smartwatch with health tracking features",
+            "price": 299.99,
+            "stock": 60,
+            "categories": ["Watches", "Accessories", "Digital Music"]
+        },
+        {
+            "title": "L-Shaped Office Desk",
+            "description": "Modern corner desk with cable management",
+            "price": 249.99,
+            "stock": 35,
+            "categories": ["Office", "Furniture"]
+        },
+        {
+            "title": "KitchenAid Stand Mixer",
+            "description": "Professional 5-quart stand mixer in metallic chrome",
+            "price": 399.99,
+            "stock": 40,
+            "categories": ["Appliances", "Kitchen"]
+        },
+        {
+            "title": "Yoga Mat Premium",
+            "description": "Extra thick eco-friendly yoga mat with alignment lines",
+            "price": 49.99,
+            "stock": 120,
+            "categories": ["Yoga & Pilates", "Exercise Equipment"]
+        },
+        {
+            "title": "Coleman 4-Person Tent",
+            "description": "Weatherproof tent with instant setup technology",
+            "price": 159.99,
+            "stock": 45,
+            "categories": ["Camping", "Outdoor Recreation"]
+        },
+        {
+            "title": "The Midnight Library",
+            "description": "Bestselling novel by Matt Haig",
+            "price": 24.99,
+            "stock": 200,
+            "categories": ["Fiction", "Books"]
+        },
+        {
+            "title": "Bose QuietComfort Earbuds",
+            "description": "Wireless noise-cancelling earbuds with premium sound",
+            "price": 279.99,
+            "stock": 85,
+            "categories": ["Phone Accessories", "Digital Music"]
+        },
+        {
+            "title": "Philips Hue Starter Kit",
+            "description": "Smart LED lighting system with bridge and 3 bulbs",
+            "price": 199.99,
+            "stock": 55,
+            "categories": ["Lighting", "Decor", "Home Textiles"]
+        },
+        {
+            "title": "Specialized Rockhopper Elite",
+            "description": "29er mountain bike with hydraulic disc brakes",
+            "price": 999.99,
+            "stock": 25,
+            "categories": ["Cycling", "Outdoor Recreation"]
+        },
+        {
+            "title": "Canon EOS R6",
+            "description": "Full-frame mirrorless camera with 4K video",
+            "price": 2499.99,
+            "stock": 20,
+            "categories": ["Digital Music", "Computer Components"]
+        },
+        {
+            "title": "Nintendo Switch OLED",
+            "description": "Hybrid gaming console with enhanced display",
+            "price": 349.99,
+            "stock": 60,
+            "categories": ["Consoles", "Gaming", "Video Games"]
+        },
+        {
+            "title": "Le Creuset Dutch Oven",
+            "description": "Premium enameled cast iron cookware, 5.5qt",
+            "price": 369.99,
+            "stock": 30,
+            "categories": ["Cookware", "Kitchen"]
+        },
+        {
+            "title": "Inception (4K UHD)",
+            "description": "Christopher Nolan's mind-bending thriller in 4K",
+            "price": 29.99,
+            "stock": 100,
+            "categories": ["Action & Adventure", "Movies"]
+        },
+        {
+            "title": "Fender Stratocaster",
+            "description": "American Professional II Electric Guitar",
+            "price": 1699.99,
+            "stock": 15,
+            "categories": ["Instruments", "Music"]
+        },
+        {
+            "title": "Ray-Ban Aviator Classic",
+            "description": "Iconic sunglasses with gold frame",
+            "price": 169.99,
+            "stock": 90,
+            "categories": ["Accessories", "Fashion"]
+        },
+        {
+            "title": "Bowflex SelectTech 552",
+            "description": "Adjustable dumbbells, 5-52.5 lbs",
+            "price": 399.99,
+            "stock": 40,
+            "categories": ["Weight Training", "Exercise Equipment"]
+        },
+        {
+            "title": "Abstract Canvas Wall Art",
+            "description": "Modern 3-piece canvas set, 48x24 inches",
+            "price": 129.99,
+            "stock": 25,
+            "categories": ["Wall Art", "Decor"]
+        }
+    ]
+} 

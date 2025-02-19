@@ -1,0 +1,106 @@
+{
+    "categories": {
+        "products": "Product management",
+        "categories": "Category management",
+        "stock": "Stock management",
+        "users": "User management",
+        "orders": "Order management",
+        "reports": "Reports access",
+        "settings": "System settings"
+    },
+    "permissions": {
+        "products.view": "View products",
+        "products.create": "Create products",
+        "products.edit": "Edit products",
+        "products.delete": "Delete products",
+        "products.manage_pricing": "Manage product pricing",
+        
+        "categories.view": "View categories",
+        "categories.create": "Create categories",
+        "categories.edit": "Edit categories",
+        "categories.delete": "Delete categories",
+        "categories.manage_discounts": "Manage category discounts",
+        
+        "stock.view": "View stock levels",
+        "stock.adjust": "Adjust stock levels",
+        "stock.transfer": "Transfer stock between warehouses",
+        "stock.receive": "Receive new stock",
+        "stock.manage_warehouses": "Manage warehouses",
+        
+        "users.view": "View users",
+        "users.create": "Create users",
+        "users.edit": "Edit users",
+        "users.delete": "Delete users",
+        "users.manage_roles": "Manage user roles",
+        
+        "customers.view": "View customers",
+        "customers.edit": "Edit customers",
+        "customers.manage_discounts": "Manage customer discounts",
+        
+        "orders.view": "View orders",
+        "orders.create": "Create orders",
+        "orders.edit": "Edit orders",
+        "orders.cancel": "Cancel orders",
+        "orders.refund": "Process refunds",
+        "orders.manage_statuses": "Manage order statuses",
+        
+        "reports.sales": "View sales reports",
+        "reports.inventory": "View inventory reports",
+        "reports.customers": "View customer reports",
+        "reports.financial": "View financial reports",
+        
+        "settings.view": "View settings",
+        "settings.edit": "Edit settings"
+    },
+    "roles": {
+        "customer": {
+            "name": "Customer",
+            "permissions": [
+                "products.view",
+                "categories.view"
+            ]
+        },
+        "administrator": {
+            "name": "Administrator",
+            "permissions": [
+                "products.view",
+                "products.create",
+                "products.edit",
+                "products.delete",
+                "products.manage_pricing",
+                "categories.view",
+                "categories.create",
+                "categories.edit",
+                "categories.delete",
+                "categories.manage_discounts",
+                "stock.view",
+                "stock.adjust",
+                "stock.transfer",
+                "stock.receive",
+                "stock.manage_warehouses",
+                "users.view",
+                "users.create",
+                "users.edit",
+                "customers.view",
+                "customers.edit",
+                "customers.manage_discounts",
+                "orders.view",
+                "orders.create",
+                "orders.edit",
+                "orders.cancel",
+                "orders.refund",
+                "orders.manage_statuses",
+                "reports.sales",
+                "reports.inventory",
+                "reports.customers",
+                "reports.financial",
+                "settings.view",
+                "settings.edit"
+            ]
+        },
+        "super-administrator": {
+            "name": "Super Administrator",
+            "permissions": "*"
+        }
+    }
+} 
