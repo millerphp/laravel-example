@@ -13,8 +13,8 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable();
             $table->string('guest_id')->nullable();
             $table->timestamps();
-
             $table->index('guest_id');
+            $table->string('status')->default('pending');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

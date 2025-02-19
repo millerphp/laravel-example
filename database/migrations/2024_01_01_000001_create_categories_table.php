@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('_lft')->default(0);
             $table->integer('_rgt')->default(0);
             $table->timestamps();
+            $table->integer('position')->default(0);
         });
     }
 

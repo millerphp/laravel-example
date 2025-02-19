@@ -6,17 +6,17 @@ import {
     UsersIcon, 
     ShoppingCartIcon, 
     TagIcon, 
-    CubeIcon, 
+    ShoppingBagIcon,
     FolderIcon 
 } from '@heroicons/vue/24/outline/index.js';
 
 const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
-    { name: 'Products', href: '/admin/products', icon: CubeIcon },
-    { name: 'Categories', href: '/admin/categories', icon: FolderIcon },
-    { name: 'Users', href: '/admin/users', icon: UsersIcon },
-    { name: 'Discounts', href: '/admin/discounts', icon: TagIcon },
-    { name: 'Carts', href: '/admin/carts', icon: ShoppingCartIcon },
+    { name: 'Dashboard', href: route('dashboard'), icon: HomeIcon },
+    { name: 'Products', href: route('admin.products.index'), icon: ShoppingBagIcon },
+    { name: 'Categories', href: route('admin.categories.index'), icon: FolderIcon },
+    { name: 'Users', href: route('admin.users.index'), icon: UsersIcon },
+    { name: 'Discounts', href: route('admin.discounts.index'), icon: TagIcon },
+    { name: 'Carts', href: route('admin.carts.dashboard'), icon: ShoppingCartIcon },
 ];
 
 const page = usePage();

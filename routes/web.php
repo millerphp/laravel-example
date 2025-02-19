@@ -10,6 +10,9 @@ use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\CartController as AdminCartController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -35,6 +38,31 @@ Route::middleware(['web', 'auth', 'verified', 'role:Administrator'])->group(func
         Route::put('/{category}', [AdminCategoryController::class, 'update'])->name('update');
         Route::delete('/{category}', [AdminCategoryController::class, 'destroy'])->name('destroy');
         Route::post('/reorder', [AdminCategoryController::class, 'reorder'])->name('reorder');
+    });
+    // Admin Users Routes
+    Route::prefix('admin/users')->name('admin.users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/create', [UserController::class, 'create'])->name('create');
+        Route::post('/', [UserController::class, 'store'])->name('store');
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/{user}', [UserController::class, 'update'])->name('update');
+        Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
+    });
+    // Admin Discount Routes
+    Route::prefix('admin/discounts')->name('admin.discounts.')->group(function () {
+        Route::get('/', [DiscountController::class, 'index'])->name('index');
+        Route::get('/create', [DiscountController::class, 'create'])->name('create');
+        Route::post('/', [DiscountController::class, 'store'])->name('store');
+        Route::get('/{discount}/edit', [DiscountController::class, 'edit'])->name('edit');
+        Route::put('/{discount}', [DiscountController::class, 'update'])->name('update');
+        Route::delete('/{discount}', [DiscountController::class, 'destroy'])->name('destroy');
+        Route::post('/{discount}/toggle', [DiscountController::class, 'toggle'])->name('toggle');
+    });
+    // Admin Cart Routes
+    Route::prefix('admin/carts')->name('admin.carts.')->group(function () {
+        Route::get('/dashboard', [AdminCartController::class, 'dashboard'])->name('dashboard');
+        Route::get('/', [AdminCartController::class, 'index'])->name('index');
+        Route::get('/{cart}', [AdminCartController::class, 'show'])->name('show');
     });
     // We'll add other admin routes here later
 });

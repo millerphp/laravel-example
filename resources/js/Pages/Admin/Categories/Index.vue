@@ -32,6 +32,29 @@ function handleReorder() {
         preserveScroll: true,
     });
 }
+
+function confirmDelete(category) {
+    if (category.children_count > 0) {
+        alert('Cannot delete category with subcategories.');
+        return;
+    }
+    
+    if (category.products_count > 0) {
+        alert('Cannot delete category with products.');
+        return;
+    }
+
+    if (confirm(`Are you sure you want to delete "${category.name}"?`)) {
+        router.delete(route('admin.categories.destroy', category.id), {
+            onSuccess: () => {
+                // Success notification is handled by the flash message
+            },
+            onError: (errors) => {
+                alert(errors.error || 'An error occurred while deleting the category.');
+            },
+        });
+    }
+}
 </script>
 
 <template>
@@ -46,12 +69,6 @@ function handleReorder() {
                 >
                     Add Category
                 </Link>
-            </div>
-
-            <!-- Debug info -->
-            <div class="bg-gray-100 p-4 rounded">
-                <p>Total Categories: {{ categories.length }}</p>
-                <p>Draggable loaded: {{ !!draggable }}</p>
             </div>
 
             <!-- Categories Table -->
@@ -118,12 +135,10 @@ function handleReorder() {
                                         Edit
                                     </Link>
                                     <button
-                                        @click="() => {
-                                            if (confirm('Are you sure you want to delete this category?')) {
-                                                router.delete(route('admin.categories.destroy', category.id))
-                                            }
-                                        }"
+                                        @click="confirmDelete(category)"
                                         class="text-red-600 hover:text-red-900"
+                                        :disabled="category.children_count > 0 || category.products_count > 0"
+                                        :class="{ 'opacity-50 cursor-not-allowed': category.children_count > 0 || category.products_count > 0 }"
                                     >
                                         Delete
                                     </button>
@@ -187,12 +202,10 @@ function handleReorder() {
                                             Edit
                                         </Link>
                                         <button
-                                            @click="() => {
-                                                if (confirm('Are you sure you want to delete this category?')) {
-                                                    router.delete(route('admin.categories.destroy', category.id))
-                                                }
-                                            }"
+                                            @click="confirmDelete(category)"
                                             class="text-red-600 hover:text-red-900"
+                                            :disabled="category.children_count > 0 || category.products_count > 0"
+                                            :class="{ 'opacity-50 cursor-not-allowed': category.children_count > 0 || category.products_count > 0 }"
                                         >
                                             Delete
                                         </button>

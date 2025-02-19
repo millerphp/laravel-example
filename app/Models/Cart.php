@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
 
 class Cart extends Model
 {
@@ -11,10 +13,14 @@ class Cart extends Model
         'user_id',
         'guest_id',
         'status',
+        'total_amount',
+        'completed_at',
     ];
 
     protected $casts = [
         'created_at' => 'datetime',
+        'completed_at' => 'datetime',
+        'total_amount' => 'decimal:2',
     ];
 
     protected static function booted()
@@ -77,5 +83,57 @@ class Cart extends Model
         }
 
         $otherCart->delete();
+    }
+
+    // Scopes
+    public function scopeAbandoned(Builder $query): Builder
+    {
+        return $query->whereNull('completed_at')
+            ->whereRaw('datetime(updated_at) <= datetime("now", "-24 hours")');
+    }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->whereNull('completed_at')
+            ->where('updated_at', '>', now()->subHours(24));
+    }
+
+    public function scopeCompleted(Builder $query): Builder
+    {
+        return $query->whereNotNull('completed_at');
+    }
+
+    // Helper Methods
+    public function isAbandoned(): bool
+    {
+        return !$this->completed_at && 
+            $this->updated_at->lte(now()->subHours(24));
+    }
+
+    public function isActive(): bool
+    {
+        return !$this->completed_at && 
+            $this->updated_at->gt(now()->subHours(24));
+    }
+
+    public function isCompleted(): bool
+    {
+        return (bool) $this->completed_at;
+    }
+
+    public function complete(): void
+    {
+        $this->update([
+            'completed_at' => now(),
+        ]);
+    }
+
+    public function calculateTotal(): void
+    {
+        $this->update([
+            'total_amount' => $this->items->sum(function ($item) {
+                return $item->quantity * $item->price;
+            }),
+        ]);
     }
 } 
