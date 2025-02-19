@@ -10,8 +10,6 @@ onMounted(() => {
     cart.loadCart();
 });
 
-// Debug output
-console.log('Cart items:', cart.items);
 </script>
 
 <template>

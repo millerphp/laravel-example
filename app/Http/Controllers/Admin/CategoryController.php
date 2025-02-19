@@ -12,16 +12,10 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        \Log::info('Loading categories in admin controller');
         $categories = Category::withCount(['products', 'discounts'])
             ->with(['parent', 'children'])
             ->orderBy('position')
             ->get();
-
-        \Log::info('Categories found:', [
-            'count' => $categories->count(),
-            'data' => $categories->toArray()
-        ]);
 
         return Inertia::render('Admin/Categories/Index', [
             'categories' => $categories->map(fn ($category) => [

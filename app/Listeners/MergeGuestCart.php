@@ -72,18 +72,7 @@ class MergeGuestCart
             
             // Clear the guest cart ID from session
             session()->forget('cart_guest_id');
-
-            Log::info('Guest cart merged successfully with recalculated discounts', [
-                'user_id' => $event->user->id,
-                'guest_cart_id' => $guestCart->id,
-                'user_cart_id' => $userCart->id
-            ]);
         } catch (\Exception $e) {
-            Log::error('Failed to merge guest cart', [
-                'error' => $e->getMessage(),
-                'guest_id' => $guestId,
-                'user_id' => $event->user->id
-            ]);
         }
     }
 } 

@@ -26,9 +26,9 @@ const formattedPrice = (price) => {
 };
 
 function handleSubmit() {
-    // This will be implemented later with Stripe
-    console.log('Processing payment...');
+
 }
+
 </script>
 
 <template>

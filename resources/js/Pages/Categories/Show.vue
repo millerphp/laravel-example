@@ -27,12 +27,6 @@ const props = defineProps({
     },
 });
 
-// Add debugging
-console.log('Category:', props.category);
-console.log('Products:', props.products);
-console.log('Filters:', props.filters);
-console.log('Categories in category page:', props.categories);
-
 const sortOptions = [
     { value: 'newest', label: 'Newest First' },
     { value: 'oldest', label: 'Oldest First' },
@@ -73,8 +67,7 @@ const breadcrumbItems = computed(() => {
 });
 
 function addToCart(product) {
-    // We'll implement this later
-    console.log('Adding to cart:', product);
+    
 }
 </script>
 

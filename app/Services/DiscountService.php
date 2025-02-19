@@ -14,11 +14,6 @@ class DiscountService
      */
     public function calculateBestDiscount(Product $product, ?User $user = null): array
     {
-        Log::info('Calculating discounts for product:', [
-            'product_id' => $product->id,
-            'product_price' => $product->price,
-        ]);
-
         // Guard against null or zero prices
         if (!$product->price || $product->price <= 0) {
             return [
@@ -30,17 +25,9 @@ class DiscountService
 
         $allDiscounts = $this->getAllApplicableDiscounts($product, $user);
         
-        Log::info('Found applicable discounts:', [
-            'discounts' => $allDiscounts->toArray()
-        ]);
-
         // Get the best discount combination
         $bestCombination = $this->calculateBestCombination($allDiscounts, $product->price);
         
-        Log::info('Calculated best combination:', [
-            'combination' => $bestCombination
-        ]);
-
         return [
             'final_price' => $bestCombination['final_price'],
             'total_discount_percentage' => $bestCombination['total_percentage'],
@@ -177,22 +164,11 @@ class DiscountService
 
     private function getCategoryDiscounts(Product $product): Collection
     {
-        Log::info('Getting category discounts for product:', [
-            'product_id' => $product->id,
-            'categories' => $product->categories->pluck('id', 'name'),
-        ]);
-
         return $product->categories->flatMap(function ($category) {
             $activeDiscounts = $category->activeDiscounts()
                 ->where('type', 'category')  // Only get category-level discounts
                 ->get();
             
-            Log::info('Category active discounts:', [
-                'category_id' => $category->id,
-                'category_name' => $category->name,
-                'discounts' => $activeDiscounts->toArray()
-            ]);
-
             return $activeDiscounts->map(function ($discount) use ($category) {
                 return [
                     'type' => 'category',

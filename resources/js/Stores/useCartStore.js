@@ -13,12 +13,9 @@ export const useCartStore = defineStore('cart', () => {
         try {
             isLoading.value = true;
             const response = await axios.get(route('cart.data'));
-            console.log('Cart data from server:', response.data);
             items.value = response.data.items;
-            console.log('Items after load:', items.value);
             isLoading.value = false;
         } catch (error) {
-            console.error('Failed to load cart:', error);
             isLoading.value = false;
         }
     };
@@ -29,8 +26,6 @@ export const useCartStore = defineStore('cart', () => {
                 product_id: product.id,
                 quantity: quantity + (items.value.find(item => item.product.id === product.id)?.quantity || 0)
             });
-
-            console.log('Add to cart response:', response.data);
 
             // Update local cart with server response
             const cartItem = response.data.item;

@@ -131,14 +131,7 @@ class Product extends Model
         return Attribute::make(
             get: function () {
                 $discountService = app(DiscountService::class);
-                Log::info('Getting final price for product:', [
-                    'product_id' => $this->id,
-                    'base_price' => $this->price,
-                    'categories' => $this->categories->pluck('id', 'name'),
-                    'category_discounts' => $this->categories->flatMap->discounts->toArray(),
-                ]);
                 $discount = $discountService->calculateBestDiscount($this);
-                Log::info('Calculated discount:', $discount);
                 return $discount['final_price'];
             }
         );

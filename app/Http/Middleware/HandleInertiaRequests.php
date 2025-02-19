@@ -43,11 +43,6 @@ class HandleInertiaRequests extends Middleware
                 ->get();
         });
 
-        \Log::info('Categories being shared:', [
-            'count' => $categories->count(),
-            'data' => $categories->toArray()
-        ]);
-
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $user,

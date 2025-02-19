@@ -11,8 +11,6 @@ const props = defineProps({
     }
 });
 
-console.log('Categories in menu:', props.categories);
-
 const isNested = computed(() => {
     return props.categories.some(cat => cat.children?.length > 0);
 });

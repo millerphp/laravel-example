@@ -24,8 +24,6 @@ const props = defineProps({
     },
 });
 
-console.log('Categories in product page:', props.categories);
-
 const quantity = ref(1);
 const selectedTab = ref('description');
 const cart = useCartStore();

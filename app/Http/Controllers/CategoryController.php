@@ -12,11 +12,6 @@ class CategoryController extends Controller
 {
     public function show(Request $request, Category $category)
     {
-        \Log::info('Category request:', [
-            'category' => $category->toArray(),
-            'filters' => $request->all()
-        ]);
-
         // Load the category with its ancestors for breadcrumbs
         $category->load(['ancestors', 'discounts']);
 
@@ -31,23 +26,7 @@ class CategoryController extends Controller
             $query->where('categories.id', $category->id);
         })->where('is_active', true);
 
-        // Debug the category and its discounts
-        Log::info('Category and its discounts:', [
-            'category_id' => $category->id,
-            'category_name' => $category->name,
-            'discounts' => $category->discounts->toArray()
-        ]);
-
-        // Debug product prices
         $products = $query->get();
-        \Log::info('Products in category:', [
-            'category_id' => $category->id,
-            'products' => $products->map(fn($p) => [
-                'id' => $p->id,
-                'price' => $p->price,
-                'final_price' => $p->final_price,
-            ])->toArray()
-        ]);
 
         // Apply filters
         if ($minPrice) {
@@ -99,15 +78,6 @@ class CategoryController extends Controller
             'stock' => $product->getTotalAvailableQuantity(),
         ])
         ->withQueryString();
-
-        // Debug the first product's data
-        if ($products->count() > 0) {
-            Log::info('First product data:', [
-                'product' => $products->first(),
-                'categories' => $products->first()['categories'],
-                'discounts' => $products->first()['applied_discounts'],
-            ]);
-        }
 
         // Get price range for filters
         $priceRange = Product::whereHas('categories', function ($query) use ($category) {

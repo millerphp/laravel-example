@@ -11,13 +11,7 @@ const props = defineProps({
     },
 });
 
-console.log('Categories received:', props.categories);
-
 const categories = ref(props.categories);
-
-// Debug logging
-console.log('Draggable component:', draggable);
-console.log('Categories ref:', categories.value);
 
 function handleReorder() {
     // Update positions based on new order

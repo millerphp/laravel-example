@@ -23,7 +23,6 @@ const props = defineProps({
     },
 });
 
-console.log('Categories in header:', props.categories);
 </script>
 
 <template>
